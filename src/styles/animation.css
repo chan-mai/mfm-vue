@@ -1,0 +1,227 @@
+/* NOTE: 速度/遅延はinlineでoverride */
+.mfm-anim-tada {
+	animation: mfm-tada 1s linear infinite both;
+}
+
+.mfm-anim-jelly {
+	animation: mfm-jelly 1s linear infinite both;
+}
+
+.mfm-anim-twitch {
+	animation: mfm-twitch 0.5s ease infinite;
+}
+
+.mfm-anim-shake {
+	animation: mfm-shake 0.5s ease infinite;
+}
+
+.mfm-anim-jump {
+	animation: mfm-jump 0.75s linear infinite;
+}
+
+.mfm-anim-bounce {
+	transform-origin: center bottom;
+	animation: mfm-bounce 0.75s linear infinite;
+}
+
+.mfm-anim-spin {
+	animation: mfm-spin 1.5s linear infinite;
+}
+
+.mfm-anim-spin-x {
+	animation: mfm-spin-x 1.5s linear infinite;
+}
+
+.mfm-anim-spin-y {
+	animation: mfm-spin-y 1.5s linear infinite;
+}
+
+.mfm-anim-rainbow {
+	animation: mfm-rainbow 1s linear infinite;
+}
+
+@keyframes mfm-tada {
+	0%,
+	100% {
+		transform: scale3d(1, 1, 1);
+	}
+	10%,
+	20% {
+		transform: scale3d(0.91, 0.91, 0.91) rotate3d(0, 0, 1, -2deg);
+	}
+	30%,
+	70% {
+		transform: scale3d(1.09, 1.09, 1.09) rotate3d(0, 0, 1, 2deg);
+	}
+	50%,
+	90% {
+		transform: scale3d(1.09, 1.09, 1.09) rotate3d(0, 0, 1, -2deg);
+	}
+}
+
+@keyframes mfm-jelly {
+	0%,
+	100% {
+		transform: scale3d(1, 1, 1);
+	}
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+	65% {
+		transform: scale3d(0.95, 1.05, 1);
+	}
+	75% {
+		transform: scale3d(1.05, 0.95, 1);
+	}
+}
+
+@keyframes mfm-twitch {
+	0% { transform: translate(-3px, 1px); }
+	5% { transform: translate(5px, 0px); }
+	10% { transform: translate(-7px, -4px); }
+	15% { transform: translate(1px, -2px); }
+	20% { transform: translate(-6px, 8px); }
+	25% { transform: translate(-4px, 9px); }
+	30% { transform: translate(-3px, 5px); }
+	35% { transform: translate(-8px, -6px); }
+	40% { transform: translate(-2px, 4px); }
+	45% { transform: translate(0px, 4px); }
+	50% { transform: translate(7px, -5px); }
+	55% { transform: translate(-4px, 4px); }
+	60% { transform: translate(-1px, 3px); }
+	65% { transform: translate(3px, 5px); }
+	70% { transform: translate(-7px, -4px); }
+	75% { transform: translate(0px, -8px); }
+	80% { transform: translate(1px, -7px); }
+	85% { transform: translate(1px, -5px); }
+	90% { transform: translate(0px, 5px); }
+	95% { transform: translate(-2px, 2px); }
+	100% { transform: translate(2px, 6px); }
+}
+
+@keyframes mfm-shake {
+	0% { transform: translate(-2px, -1px) rotate(10deg); }
+	5% { transform: translate(-1px, 0px) rotate(-3deg); }
+	10% { transform: translate(-1px, 2px) rotate(-3deg); }
+	15% { transform: translate(-2px, 1px) rotate(-4deg); }
+	20% { transform: translate(-1px, -1px) rotate(9deg); }
+	25% { transform: translate(2px, 0px) rotate(-9deg); }
+	30% { transform: translate(1px, 1px) rotate(0deg); }
+	35% { transform: translate(-2px, -2px) rotate(7deg); }
+	40% { transform: translate(3px, -2px) rotate(4deg); }
+	45% { transform: translate(0px, 2px) rotate(-9deg); }
+	50% { transform: translate(0px, -2px) rotate(11deg); }
+	55% { transform: translate(-2px, -2px) rotate(-2deg); }
+	60% { transform: translate(2px, -2px) rotate(-2deg); }
+	65% { transform: translate(-1px, 1px) rotate(6deg); }
+	70% { transform: translate(2px, 2px) rotate(-10deg); }
+	75% { transform: translate(-1px, -1px) rotate(2deg); }
+	80% { transform: translate(2px, -1px) rotate(9deg); }
+	85% { transform: translate(-2px, 3px) rotate(7deg); }
+	90% { transform: translate(-1px, 1px) rotate(-10deg); }
+	95% { transform: translate(0px, 0px) rotate(0deg); }
+	100% { transform: translate(2px, 3px) rotate(-10deg); }
+}
+
+@keyframes mfm-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes mfm-spin-x {
+	from {
+		transform: perspective(128px) rotateX(0deg);
+	}
+	to {
+		transform: perspective(128px) rotateX(360deg);
+	}
+}
+
+@keyframes mfm-spin-y {
+	from {
+		transform: perspective(128px) rotateY(0deg);
+	}
+	to {
+		transform: perspective(128px) rotateY(360deg);
+	}
+}
+
+@keyframes mfm-jump {
+	0%,
+	50%,
+	100% {
+		transform: translateY(0);
+	}
+	25% {
+		transform: translateY(-16px);
+	}
+	75% {
+		transform: translateY(-8px);
+	}
+}
+
+@keyframes mfm-bounce {
+	0%,
+	50%,
+	100% {
+		transform: translateY(0) scale(1, 1);
+	}
+	25% {
+		transform: translateY(-16px) scale(1, 1);
+	}
+	75% {
+		transform: translateY(0) scale(1.5, 0.75);
+	}
+}
+
+@keyframes mfm-rainbow {
+	from {
+		filter: hue-rotate(0deg) contrast(150%) saturate(150%);
+	}
+	to {
+		filter: hue-rotate(360deg) contrast(150%) saturate(150%);
+	}
+}
+
+/* animated未指定時に限りクライアント側設定に準拠 */
+@media (prefers-reduced-motion: reduce) {
+	.mfm-motion-auto .mfm-anim-tada,
+	.mfm-motion-auto .mfm-anim-jelly,
+	.mfm-motion-auto .mfm-anim-twitch,
+	.mfm-motion-auto .mfm-anim-shake,
+	.mfm-motion-auto .mfm-anim-jump,
+	.mfm-motion-auto .mfm-anim-bounce,
+	.mfm-motion-auto .mfm-anim-spin,
+	.mfm-motion-auto .mfm-anim-spin-x,
+	.mfm-motion-auto .mfm-anim-spin-y {
+		animation: none;
+	}
+
+	.mfm-motion-auto .mfm-anim-rainbow {
+		display: inline;
+		animation: none;
+		background-image: linear-gradient(
+			to right,
+			#f00 0%,
+			#ffa500 17%,
+			#ff0 33%,
+			#0f0 50%,
+			#0ff 67%,
+			#00f 83%,
+			#f0f 100%
+		);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+}

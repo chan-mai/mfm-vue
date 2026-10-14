@@ -1,0 +1,44 @@
+.mfm-base {
+	overflow-wrap: break-word;
+	tab-size: 2;
+	accent-color: var(--mfm-theme-accent);
+	scrollbar-color: var(--mfm-theme-scrollbarHandle) transparent;
+}
+
+.mfm-base::selection,
+.mfm-base :deep(::selection) {
+	color: var(--mfm-theme-fgOnAccent, HighlightText);
+	background-color: var(--mfm-theme-accent, Highlight);
+}
+
+.mfm-base:focus-visible,
+.mfm-base :deep(:focus-visible) {
+	outline: var(--mfm-theme-focus, Highlight) solid 2px;
+	outline-offset: -2px;
+}
+
+.mfm-base :deep(:focus-visible:hover) {
+	text-decoration: none;
+}
+
+.mfm-base :deep(a:focus-visible) {
+	outline-offset: 2px;
+}
+
+.mfm-base :deep(a),
+.mfm-base :deep(input),
+.mfm-base :deep(textarea) {
+	-webkit-tap-highlight-color: transparent;
+}
+
+.mfm-base :deep(a) {
+	-webkit-touch-callout: none;
+}
+
+.mfm-base :deep(a[target="_blank"]) {
+	-webkit-touch-callout: default;
+}
+
+.mfm-base :deep(rt) {
+	white-space: initial;
+}

@@ -1,0 +1,31 @@
+.mfm {
+	white-space: pre-wrap;
+}
+
+.mfm-nowrap {
+	white-space: pre;
+	overflow-wrap: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.mfm-italic {
+	font-style: oblique;
+}
+
+.mfm-small {
+	opacity: 0.7;
+}
+
+.mfm-center {
+	text-align: center;
+}
+
+.mfm-quote {
+	display: block;
+	margin: 8px;
+	padding: 6px 0 6px 12px;
+	color: var(--mfm-theme-fg, currentColor);
+	border-left: solid 3px var(--mfm-theme-fg, currentColor);
+	opacity: 0.7;
+}

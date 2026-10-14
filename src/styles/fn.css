@@ -1,0 +1,90 @@
+.mfm-fn {
+	display: inline-block;
+}
+
+.mfm-fn-tada {
+	font-size: 150%;
+}
+
+.mfm-fn-rotate {
+	transform-origin: center center;
+}
+
+.mfm-fn-color {
+	overflow-wrap: anywhere;
+}
+
+.mfm-fn-border {
+	border-color: var(--mfm-theme-accent, #86b300);
+}
+
+.mfm-fn-clip {
+	overflow: clip;
+}
+
+.mfm-blur {
+	filter: blur(6px);
+	transition: filter 0.3s;
+}
+
+.mfm-blur:hover {
+	filter: blur(0);
+}
+
+.mfm-x2 {
+	--mfm-zoom-size: 200%;
+}
+
+.mfm-x3 {
+	--mfm-zoom-size: 400%;
+}
+
+.mfm-x4 {
+	--mfm-zoom-size: 600%;
+}
+
+.mfm-x2,
+.mfm-x3,
+.mfm-x4 {
+	font-size: var(--mfm-zoom-size);
+}
+
+/* 2段目効果半減 */
+.mfm-x2 .mfm-x2,
+.mfm-x2 .mfm-x3,
+.mfm-x2 .mfm-x4,
+.mfm-x3 .mfm-x2,
+.mfm-x3 .mfm-x3,
+.mfm-x3 .mfm-x4,
+.mfm-x4 .mfm-x2,
+.mfm-x4 .mfm-x3,
+.mfm-x4 .mfm-x4 {
+	font-size: calc(var(--mfm-zoom-size) / 2 + 50%);
+}
+
+/* 3段目以降無効 */
+:is(.mfm-x2, .mfm-x3, .mfm-x4) :is(.mfm-x2, .mfm-x3, .mfm-x4) .mfm-x2,
+:is(.mfm-x2, .mfm-x3, .mfm-x4) :is(.mfm-x2, .mfm-x3, .mfm-x4) .mfm-x3,
+:is(.mfm-x2, .mfm-x3, .mfm-x4) :is(.mfm-x2, .mfm-x3, .mfm-x4) .mfm-x4 {
+	font-size: 100%;
+}
+
+.mfm-rainbow-fallback {
+	background-image: linear-gradient(
+		to right,
+		#f00 0%,
+		#ffa500 17%,
+		#ff0 33%,
+		#0f0 50%,
+		#0ff 67%,
+		#00f 83%,
+		#f0f 100%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.mfm-clickable {
+	user-select: none;
+}

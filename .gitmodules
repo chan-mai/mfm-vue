@@ -1,0 +1,3 @@
+[submodule "vendor/aiscript-vscode"]
+	path = vendor/aiscript-vscode
+	url = https://github.com/aiscript-dev/aiscript-vscode

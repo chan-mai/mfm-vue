@@ -1,0 +1,71 @@
+{
+  "name": "mfm-vue",
+  "version": "0.1.0",
+  "description": "MFM (Misskey Flavored Markdown) renderer for Vue 3",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "keywords": [
+    "misskey",
+    "mfm",
+    "vue",
+    "vue3"
+  ],
+  "scripts": {
+    "dev": "vite --config vite.demo.config.ts",
+    "build": "vite build && vue-tsc -p tsconfig.build.json && node scripts/check-dist.mjs",
+    "build:demo": "vite build --config vite.demo.config.ts",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "compare": "node scripts/compare/run.ts"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0"
+  },
+  "dependencies": {
+    "@misskey-dev/emoji-data": "17.0.3",
+    "json5": "^2.2.3",
+    "mfm-js": "^0.27.0",
+    "punycode.js": "^2.3.1",
+    "shiki": "^4.5.0",
+    "tinycolor2": "^1.6.0"
+  },
+  "devDependencies": {
+    "@misskey-dev/eslint-plugin": "2.2.1",
+    "@stylistic/eslint-plugin": "5.10.0",
+    "@types/node": "^24.0.0",
+    "@types/tinycolor2": "^1.4.6",
+    "@typescript-eslint/eslint-plugin": "8.71.0",
+    "@typescript-eslint/parser": "8.71.0",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "@vue/test-utils": "^2.5.1",
+    "eslint": "9.39.5",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-vue": "10.11.1",
+    "globals": "17.13.0",
+    "happy-dom": "^21.0.1",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.4",
+    "vue": "^3.5.44",
+    "vue-eslint-parser": "10.4.1",
+    "vue-tsc": "^3.3.13"
+  }
+}

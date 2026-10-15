@@ -46,7 +46,7 @@
     "vue": "^3.4.0"
   },
   "dependencies": {
-    "@misskey-dev/emoji-data": "17.0.3",
+    "@misskey-dev/emoji-data": "17.0.6",
     "json5": "^2.2.3",
     "mfm-js": "^0.27.0",
     "punycode.js": "^2.3.1",
@@ -60,8 +60,8 @@
     "@tsdown/css": "0.23.1",
     "@types/node": "^24.0.0",
     "@types/tinycolor2": "^1.4.6",
-    "@typescript-eslint/eslint-plugin": "8.71.0",
-    "@typescript-eslint/parser": "8.71.0",
+    "@typescript-eslint/eslint-plugin": "8.71.1",
+    "@typescript-eslint/parser": "8.71.1",
     "@vitejs/plugin-vue": "^6.0.10",
     "@vue/test-utils": "^2.5.1",
     "eslint": "9.39.5",

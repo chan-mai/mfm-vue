@@ -1,0 +1,89 @@
+:root {
+	color-scheme: light dark;
+	font-family: system-ui, sans-serif;
+}
+
+body {
+	margin: 0;
+}
+
+.demo {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 16px;
+}
+
+.controls {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 16px;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+.panes {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+}
+
+@media (max-width: 800px) {
+	.panes {
+		grid-template-columns: 1fr;
+	}
+}
+
+textarea {
+	min-height: 600px;
+	font-family: monospace;
+	font-size: 13px;
+}
+
+.preview {
+	padding: 12px;
+	border: 1px solid rgba(128, 128, 128, 0.4);
+	border-radius: 8px;
+	overflow: clip;
+	line-height: 1.35;
+}
+
+.error {
+	color: #d33;
+}
+
+.demo-hashtag {
+	color: #e67e22;
+}
+
+.demo-mention img {
+	width: 1.4em;
+	height: 1.4em;
+	margin-right: 0.2em;
+	border-radius: 50%;
+	vertical-align: middle;
+}
+
+.theme {
+	display: flex;
+	flex: 1 1 100%;
+	gap: 8px;
+	align-items: center;
+}
+
+.theme textarea {
+	flex: 1;
+	min-height: auto;
+}
+
+/* プレビュー枠背景のテーマ追従 */
+.preview-dark {
+	color: #dadada;
+	background: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+	.preview-auto {
+		color: #dadada;
+		background: #000;
+	}
+}

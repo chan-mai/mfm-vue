@@ -14,18 +14,6 @@ export default defineConfig({
 			),
 		},
 	},
-	build: {
-		lib: {
-			entry: 'src/index.ts',
-			formats: ['es'],
-			fileName: 'index',
-			cssFileName: 'style',
-		},
-		rollupOptions: {
-			external: ['vue', 'mfm-js', 'punycode.js', 'tinycolor2', 'json5', /^shiki(\/|$)/, /^@misskey-dev\/emoji-data(\/|$)/],
-		},
-		sourcemap: true,
-	},
 	test: {
 		environment: 'happy-dom',
 		fsModuleCache: false,

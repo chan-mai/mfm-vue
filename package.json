@@ -2,7 +2,12 @@
   "name": "mfm-vue",
   "version": "0.1.0",
   "description": "MFM (Misskey Flavored Markdown) renderer for Vue 3",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chan-mai/mfm-vue.git"
+  },
   "license": "MIT",
+  "packageManager": "pnpm@12.9.0",
   "type": "module",
   "sideEffects": [
     "**/*.css"
@@ -29,12 +34,13 @@
   ],
   "scripts": {
     "dev": "vite --config vite.demo.config.ts",
-    "build": "vite build && vue-tsc -p tsconfig.build.json && node scripts/check-dist.mjs",
+    "build": "tsdown && node scripts/check-dist.mjs",
     "build:demo": "vite build --config vite.demo.config.ts",
     "typecheck": "vue-tsc --noEmit -p tsconfig.json",
     "lint": "eslint .",
     "test": "vitest run",
-    "compare": "node scripts/compare/run.ts"
+    "compare": "node scripts/compare/run.ts",
+    "check:pack": "publint && attw --pack . --profile esm-only --exclude-entrypoints style.css"
   },
   "peerDependencies": {
     "vue": "^3.4.0"
@@ -48,8 +54,10 @@
     "tinycolor2": "^1.6.0"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
     "@misskey-dev/eslint-plugin": "2.2.1",
     "@stylistic/eslint-plugin": "5.10.0",
+    "@tsdown/css": "0.23.1",
     "@types/node": "^24.0.0",
     "@types/tinycolor2": "^1.4.6",
     "@typescript-eslint/eslint-plugin": "8.71.0",
@@ -61,7 +69,10 @@
     "eslint-plugin-vue": "10.11.1",
     "globals": "17.13.0",
     "happy-dom": "^21.0.1",
+    "publint": "^0.3.25",
+    "tsdown": "^0.23.1",
     "typescript": "~6.0.3",
+    "unplugin-vue": "^8.0.0",
     "vite": "^8.3.4",
     "vitest": "^5.0.4",
     "vue": "^3.5.44",

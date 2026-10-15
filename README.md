@@ -397,7 +397,7 @@ mfm.js 0.27.0の全構文と、Misskey本家が描画する全関数(24種類)�
 | SSR, テーマコードを指定 | 24.6ms | 235.9ms |
 | DOMへのマウント(happy-dom) | 68.4ms | - |
 
-`dist/index.js`は58.0KiB(gzip 19.1KiB), `dist/style.css`は17.4KiB(gzip 3.6KiB)です。依存パッケージを含みません。
+`dist/index.js`は80.5KiB(gzip 21.9KiB), `dist/style.css`は20.0KiB(gzip 4.1KiB)です。依存パッケージを含みません。
 
 ## 開発
 

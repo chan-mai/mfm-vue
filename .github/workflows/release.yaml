@@ -1,0 +1,52 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: true
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - run: npm install -g npm@12
+      - run: pnpm install --frozen-lockfile
+
+      # 公開後は取消不可
+      - name: Verify tag matches package version
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          pkg="$(node -p "require('./package.json').version")"
+          if [ "$tag" != "$pkg" ]; then
+            echo "::error::tag $GITHUB_REF_NAME does not match package version $pkg"
+            exit 1
+          fi
+          echo "publishing $pkg"
+
+      # CIと同じ検査
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm check:pack
+
+      # Trusted Publishing, OIDC交換はnpm CLIのみ確実
+      - name: Publish to npm
+        run: npm publish --access public
+
+      - name: Create GitHub release
+        run: gh release create "$GITHUB_REF_NAME" --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}

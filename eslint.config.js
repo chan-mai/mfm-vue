@@ -9,7 +9,8 @@ export default [
 	{
 		ignores: [
 			'dist/**',
-			'dist-demo/**',
+			'demo/dist/**',
+			'**/.wrangler/**',
 			'node_modules/**',
 			'vendor/**',
 			// ページ内で評価する式
@@ -112,15 +113,15 @@ export default [
 		},
 	},
 	{
-		// Vite, Vitestの設定, SFC, モジュール宣言はdefault export必須
-		files: ['eslint.config.js', '*.config.ts', '**/*.vue', '**/*.d.ts'],
+		// Vite, Vitestの設定, SFC, モジュール宣言, Workerはdefault export必須
+		files: ['eslint.config.js', '**/*.config.ts', '**/*.vue', '**/*.d.ts', 'demo/worker/*.ts'],
 		rules: {
 			'import/no-default-export': 'off',
 		},
 	},
 	{
-		// 構文名と同名の描画部品
-		files: ['src/components/**/*.vue'],
+		// 構文名と同名の描画部品, デモページ
+		files: ['src/components/**/*.vue', 'demo/src/pages/**/*.vue'],
 		rules: {
 			'vue/multi-word-component-names': 'off',
 		},

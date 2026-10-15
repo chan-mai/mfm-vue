@@ -1,2 +1,9 @@
+packages:
+  - demo
+
 minimumReleaseAgeExclude:
   - mfm-js@0.27.0
+
+allowBuilds:
+  esbuild: true
+  workerd: true

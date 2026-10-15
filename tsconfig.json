@@ -14,5 +14,5 @@
     "jsx": "preserve",
     "types": ["node"]
   },
-  "include": ["src", "test", "demo", "scripts", "*.config.ts"]
+  "include": ["src", "test", "scripts", "*.config.ts"]
 }

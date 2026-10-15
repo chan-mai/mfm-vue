@@ -1,5 +1,13 @@
 # mfm-vue
 
+[![npm](https://img.shields.io/npm/v/mfm-vue?style=flat-square&logo=npm&logoColor=white&label=npm&color=86b300)](https://www.npmjs.com/package/mfm-vue)
+[![CI](https://img.shields.io/github/actions/workflow/status/chan-mai/mfm-vue/ci.yaml?branch=develop&style=flat-square&logo=github&logoColor=white&label=CI&color=86b300)](https://github.com/chan-mai/mfm-vue/actions/workflows/ci.yaml)
+[![License](https://img.shields.io/npm/l/mfm-vue?style=flat-square&label=license&color=86b300)](./LICENSE)
+
+![Vue](https://img.shields.io/badge/Vue_3-4FC08D?style=flat-square&logo=vuedotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Misskey](https://img.shields.io/badge/Misskey-86B300?style=flat-square&logo=misskey&logoColor=white)
+
 Vue 3向けの[MFM](https://misskey-hub.net/ja/docs/for-users/features/mfm/)レンダラです。構文解析には[mfm.js](https://github.com/misskey-dev/mfm.js)を利用しています。他実装とは異なり、Misskey本家との描画結果の互換性を重視しています。
 
 ## 特徴

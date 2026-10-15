@@ -1,0 +1,68 @@
+@layer theme, base, components, utilities;
+
+@import "kiso.css" layer(base);
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@custom-variant dark (@media (prefers-color-scheme: dark));
+
+@theme {
+	--font-sans: "Hiragino Maru Gothic Pro", "BIZ UDGothic", Roboto, HelveticaNeue, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-mono: "Fira Code", "Fira Mono", Consolas, Menlo, Courier, monospace;
+	--color-accent: #86b300;
+	--color-accent-strong: #5f8000;
+	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+	:root {
+		color-scheme: light dark;
+		font-family: var(--font-sans);
+		line-height: 1.35;
+	}
+
+	body {
+		min-block-size: 100dvh;
+		background-color: #f5f5f4;
+		color: #3f3f46;
+
+		@media (prefers-color-scheme: dark) {
+			background-color: #121212;
+			color: #e4e4e7;
+		}
+	}
+}
+
+@layer components {
+	.card {
+		border: 1px solid rgb(0 0 0 / 0.08);
+		border-radius: 1rem;
+		background-color: #fff;
+		box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+
+		@media (prefers-color-scheme: dark) {
+			border-color: rgb(255 255 255 / 0.08);
+			background-color: #1c1c1e;
+		}
+	}
+
+	.field {
+		inline-size: 100%;
+		padding: 0.375rem 0.625rem;
+		border: 1px solid rgb(0 0 0 / 0.12);
+		border-radius: 0.5rem;
+		background-color: transparent;
+		font-size: 0.8125rem;
+		transition: border-color 0.2s;
+
+		&:focus-visible {
+			border-color: var(--color-accent);
+			outline: 2px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+			outline-offset: 0;
+		}
+
+		@media (prefers-color-scheme: dark) {
+			border-color: rgb(255 255 255 / 0.14);
+		}
+	}
+}

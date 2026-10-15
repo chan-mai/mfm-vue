@@ -417,7 +417,7 @@ pnpm test       # Vitest
 pnpm typecheck  # vue-tsc
 pnpm lint       # ESLint
 pnpm build      # dist/ へライブラリを出力
-pnpm build:demo # dist-demo/ へデモを出力
+pnpm build:demo # demo/dist/ へデモを出力
 pnpm compare <ノートのURL> # Misskeyのノートページとの描画比較(Headless Chrome)
 ```
 

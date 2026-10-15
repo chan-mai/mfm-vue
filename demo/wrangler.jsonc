@@ -1,0 +1,13 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "mfm-vue-demo",
+	"main": "./worker/index.ts",
+	"compatibility_date": "2026-10-12",
+	"assets": {
+		"not_found_handling": "single-page-application",
+		"run_worker_first": ["/api/*"],
+	},
+	"observability": {
+		"enabled": true,
+	},
+}

@@ -33,10 +33,10 @@
     "vue3"
   ],
   "scripts": {
-    "dev": "vite --config vite.demo.config.ts",
+    "dev": "pnpm --filter @mfm-vue/demo dev",
     "build": "tsdown && node scripts/check-dist.mjs",
-    "build:demo": "vite build --config vite.demo.config.ts",
-    "typecheck": "vue-tsc --noEmit -p tsconfig.json",
+    "build:demo": "pnpm --filter @mfm-vue/demo build",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json && pnpm --filter @mfm-vue/demo typecheck",
     "lint": "eslint .",
     "test": "vitest run",
     "compare": "node scripts/compare/run.ts",

@@ -42,8 +42,21 @@ jobs:
       - run: pnpm build
       - run: pnpm check:pack
 
+      # 公開済みの版は再公開不可
+      - name: Check published version
+        id: published
+        run: |
+          pkg="$(node -p "require('./package.json').version")"
+          if [ -n "$(npm view "mfm-vue@$pkg" version 2> /dev/null)" ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "mfm-vue@$pkg is already published, skipping npm publish"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
       # Trusted Publishing, OIDC交換はnpm CLIのみ確実
       - name: Publish to npm
+        if: steps.published.outputs.exists == 'false'
         run: npm publish --access public
 
       - name: Create GitHub release

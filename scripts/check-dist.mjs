@@ -2,9 +2,9 @@ import { createRequire } from 'node:module';
 import { createSSRApp, h } from 'vue';
 import { renderToString } from 'vue/server-renderer';
 
-const dist = new URL('../dist/index.js', import.meta.url);
-const esm = await import(dist.href);
-const cjs = createRequire(import.meta.url)(dist.pathname);
+// 自己参照で利用者と同じexports解決
+const esm = await import('mfm-vue');
+const cjs = createRequire(import.meta.url)('mfm-vue');
 
 const text =
 	'**a** https://xn--r8jz45g.jp @a@xn--r8jz45g.jp :x: 👍 `c`\n```js\nconst a = 1;\n```\n$[tada b] $[unixtime 1700000000]';

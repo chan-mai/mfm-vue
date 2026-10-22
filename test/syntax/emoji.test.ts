@@ -6,9 +6,7 @@ const INSTANCE = { instanceUrl: 'https://misskey.example' };
 
 describe('emojiCode', () => {
 	it('customEmojisのマップでURL解決', () => {
-		const img = render(':a:', { customEmojis: { a: 'https://cdn/a.png' } }).get(
-			'img.mfm-custom-emoji',
-		);
+		const img = render(':a:', { customEmojis: { a: 'https://cdn/a.png' } }).get('img.mfm-custom-emoji');
 		expect(img.attributes('src')).toBe('https://cdn/a.png');
 		expect(img.attributes('alt')).toBe(':a:');
 	});
@@ -32,9 +30,7 @@ describe('emojiCode', () => {
 			author: { host: 'remote.example' },
 			customEmojis: createInstanceEmojiResolver('https://misskey.example'),
 		});
-		expect(w.get('img').attributes('src')).toBe(
-			'https://misskey.example/emoji/a@remote.example.webp',
-		);
+		expect(w.get('img').attributes('src')).toBe('https://misskey.example/emoji/a@remote.example.webp');
 	});
 
 	it('拡大率2.5倍以上はプロキシの絵文字用縮小なし, 表示サイズは同一', () => {
@@ -45,9 +41,7 @@ describe('emojiCode', () => {
 			mediaProxy: 'https://proxy.example',
 		});
 		const img = w.get('img.mfm-custom-emoji');
-		expect(img.attributes('src')).toBe(
-			`https://proxy.example/image.webp?url=${encodeURIComponent('https://remote.example/a.gif')}`,
-		);
+		expect(img.attributes('src')).toBe(`https://proxy.example/image.webp?url=${encodeURIComponent('https://remote.example/a.gif')}`);
 		expect(img.classes()).toEqual(['mfm-custom-emoji']);
 	});
 
@@ -84,21 +78,15 @@ describe('unicodeEmoji', () => {
 	});
 
 	it('instanceUrl指定時は取得元サーバの/twemoji', () => {
-		expect(render('👍', INSTANCE).get('img').attributes('src')).toBe(
-			'https://misskey.example/twemoji/1f44d.svg',
-		);
+		expect(render('👍', INSTANCE).get('img').attributes('src')).toBe('https://misskey.example/twemoji/1f44d.svg');
 	});
 
 	it('ZWJを含まない絵文字はファイル名からFE0F除去', () => {
-		expect(render('❤️', INSTANCE).get('img').attributes('src')).toBe(
-			'https://misskey.example/twemoji/2764.svg',
-		);
+		expect(render('❤️', INSTANCE).get('img').attributes('src')).toBe('https://misskey.example/twemoji/2764.svg');
 	});
 
 	it('ZWJを含む絵文字はファイル名にFE0F維持', () => {
-		expect(render('🏳️‍🌈', INSTANCE).get('img').attributes('src')).toBe(
-			'https://misskey.example/twemoji/1f3f3-fe0f-200d-1f308.svg',
-		);
+		expect(render('🏳️‍🌈', INSTANCE).get('img').attributes('src')).toBe('https://misskey.example/twemoji/1f3f3-fe0f-200d-1f308.svg');
 	});
 
 	it('emojiStyleがfluentEmojiの場合は/fluent-emoji, 国旗のみ/twemoji', () => {
@@ -108,15 +96,15 @@ describe('unicodeEmoji', () => {
 	});
 
 	it('emojiStyleがnativeの場合は文字表示, 1コードポイントはFE0F付与', () => {
-		expect(
-			render('👍', { emojiStyle: 'native' }).find('span.mfm-unicode-emoji-char').text(),
-		).toBe('👍️');
+		expect(render('👍', { emojiStyle: 'native' }).find('span.mfm-unicode-emoji-char').text()).toBe('👍️');
 	});
 
 	it('unicodeEmojiUrlがnullの場合は画像なし', () => {
-		expect(render('👍', { ...INSTANCE, unicodeEmojiUrl: null }).find('img').exists()).toBe(
-			false,
-		);
+		expect(
+			render('👍', { ...INSTANCE, unicodeEmojiUrl: null })
+				.find('img')
+				.exists(),
+		).toBe(false);
 	});
 
 	it('ホバー時に絵文字名をtitleへ設定', async () => {
@@ -124,6 +112,14 @@ describe('unicodeEmoji', () => {
 		await w.get('img').trigger('pointerenter');
 		await vi.waitFor(() => {
 			expect(w.get('img').attributes('title')).toBe('+1');
+		});
+	});
+
+	it('FE0Fなしのキーキャップは2文字目へFE0F補完して名前解決', async () => {
+		const w = render('#⃣');
+		await w.get('img').trigger('pointerenter');
+		await vi.waitFor(() => {
+			expect(w.get('img').attributes('title')).toBe('hash');
 		});
 	});
 });

@@ -4,9 +4,7 @@ let names: Promise<Map<string, string>> | null = null;
 function load() {
 	names ??= import('@misskey-dev/emoji-data/emojilist.json', {
 		with: { type: 'json' },
-	}).then(
-		({ default: list }) => new Map(list.map(([char, name]) => [char, name])),
-	);
+	}).then(({ default: list }) => new Map(list.map(([char, name]) => [char, name])));
 	return names;
 }
 
@@ -15,7 +13,15 @@ export function colorizeEmoji(char: string): string {
 	return Array.from(char).length === 1 ? `${char}️` : char;
 }
 
+// FE0Fなしの場合は先頭コードポイント直後へ挿入
+function forceColorizeEmoji(char: string): string {
+	const chars = Array.from(char);
+	if (chars.includes('️')) return char;
+	chars.splice(1, 0, '️');
+	return chars.join('');
+}
+
 export async function getEmojiName(char: string): Promise<string> {
 	const map = await load();
-	return map.get(colorizeEmoji(char)) ?? map.get(char) ?? char;
+	return map.get(forceColorizeEmoji(char)) ?? map.get(char) ?? char;
 }

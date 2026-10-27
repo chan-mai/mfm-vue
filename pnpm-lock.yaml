@@ -173,8 +173,8 @@ importers:
         specifier: ^2.2.3
         version: 2.2.3
       mfm-js:
-        specifier: ^0.27.0
-        version: 0.27.0
+        specifier: ^0.28.0
+        version: 0.28.0
       punycode.js:
         specifier: ^2.3.1
         version: 2.3.1
@@ -2371,8 +2371,8 @@ packages:
   mdast-util-to-hast@13.2.1:
     resolution: {integrity: sha512-cctsq2wp5vTsLIcaymblUriiTcZd0CwWtCbLvrOzYCDZoWyMNV8sZ7krj09FSnsiJi3WVsHLM4k6Dq/yaPyCXA==}
 
-  mfm-js@0.27.0:
-    resolution: {integrity: sha512-UgnCx6foer9OsD/WoEjVWELL5IaJ8ShBHz6XwEvQZmRon3ccz7Cdrejfk7sj2jSHhnqQOIKNLUvMsWcILafNfw==}
+  mfm-js@0.28.0:
+    resolution: {integrity: sha512-Ym54M3C1F5rqsqawi8BYEc/uCcbAlewSLiwLmJgB0Eow6QPJxm8I+pGjtRqJXf+BqoFyDFchr+dtFwesS22NHw==}
 
   micromark-util-character@2.1.1:
     resolution: {integrity: sha512-wv8tdUTJ3thSFFFJKtpYKOYiGP2+v96Hvk4Tu8KpCAsTMs6yi+nVmGh1syvSCsaxz45J6Jbw+9DD6g97+NV67Q==}
@@ -5199,7 +5199,7 @@ snapshots:
       unist-util-visit: 5.1.0
       vfile: 6.0.3
 
-  mfm-js@0.27.0:
+  mfm-js@0.28.0:
     dependencies:
       '@misskey-dev/emoji-data': 17.0.3
 

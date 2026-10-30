@@ -3,6 +3,7 @@ packages:
 
 minimumReleaseAgeExclude:
   - mfm-js@0.27.0
+  - rolldown-plugin-dts@0.29.0
 
 allowBuilds:
   esbuild: true

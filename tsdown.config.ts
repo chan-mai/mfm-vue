@@ -30,7 +30,7 @@ export default defineConfig({
 	sourcemap: true,
 	clean: true,
 	tsconfig: 'tsconfig.build.json',
-	dts: { vue: true },
+	dts: { tsc: { vue: true } },
 	css: { fileName: 'style.css' },
 	alias: {
 		'aiscript-grammar': fileURLToPath(new URL('./vendor/aiscript-vscode/aiscript/syntaxes/aiscript.tmLanguage.json', import.meta.url)),

@@ -20,11 +20,14 @@ const EMOJI_SOURCES = [
 	{ value: 'api', label: '/api/emojis' },
 	{ value: 'none', label: 'なし' },
 ] as const;
+// 属性値の//でvue-tsc誤判定, language-tools#6322
+const INSTANCE_URL_PLACEHOLDER = 'https://misskey.io';
+const MEDIA_PROXY_PLACEHOLDER = 'https://proxy.misskeyusercontent.jp';
 </script>
 
 <template>
 <UiSection title="サーバ・絵文字" defaultOpen>
-	<UiTextField v-model="settings.instanceUrl" label="instanceUrl" placeholder="https://misskey.io"/>
+	<UiTextField v-model="settings.instanceUrl" label="instanceUrl" :placeholder="INSTANCE_URL_PLACEHOLDER"/>
 	<UiSelect v-model="settings.emojiStyle" label="emojiStyle" :options="EMOJI_STYLES"/>
 	<UiSelect v-model="settings.emojiSource" label="customEmojis" :options="EMOJI_SOURCES"/>
 	<div class="flex items-center justify-end gap-2 py-1">
@@ -32,7 +35,7 @@ const EMOJI_SOURCES = [
 		<UiButton :loading="emojis.loading.value" @click="emojis.load">/api/emojisを取得</UiButton>
 	</div>
 	<UiTextField v-model="settings.me" label="me" placeholder="username"/>
-	<UiTextField v-model="settings.mediaProxy" label="mediaProxy" placeholder="https://proxy.misskeyusercontent.jp"/>
+	<UiTextField v-model="settings.mediaProxy" label="mediaProxy" :placeholder="MEDIA_PROXY_PLACEHOLDER"/>
 	<UiSwitch v-model="settings.disableAnimatedImages" label="disableAnimatedImages"/>
 </UiSection>
 </template>

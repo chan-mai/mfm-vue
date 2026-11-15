@@ -1,6 +1,6 @@
 {
   "name": "mfm-vue",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "MFM (Misskey Flavored Markdown) renderer for Vue 3",
   "repository": {
     "type": "git",

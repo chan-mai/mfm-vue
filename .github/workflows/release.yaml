@@ -1,14 +1,14 @@
 name: Release
 
 on:
-  push:
-    tags: ['v*']
+  release:
+    types: [published]
 
 jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       id-token: write
     steps:
       - uses: actions/checkout@v7
@@ -26,14 +26,25 @@ jobs:
 
       # 公開後は取消不可
       - name: Verify tag matches package version
+        id: verify
+        env:
+          PRERELEASE: ${{ github.event.release.prerelease }}
         run: |
-          tag="${GITHUB_REF_NAME#v}"
           pkg="$(node -p "require('./package.json').version")"
-          if [ "$tag" != "$pkg" ]; then
+          if [ "$GITHUB_REF_NAME" != "v$pkg" ]; then
             echo "::error::tag $GITHUB_REF_NAME does not match package version $pkg"
             exit 1
           fi
-          echo "publishing $pkg"
+          case "${pkg%%+*}" in
+            *-*) version_prerelease=true; dist_tag=next ;;
+            *) version_prerelease=false; dist_tag=latest ;;
+          esac
+          if [ "$PRERELEASE" != "$version_prerelease" ]; then
+            echo "::error::release prerelease flag ($PRERELEASE) does not match package version $pkg"
+            exit 1
+          fi
+          echo "dist_tag=$dist_tag" >> "$GITHUB_OUTPUT"
+          echo "publishing $pkg with dist-tag $dist_tag"
 
       # CIと同じ検査
       - run: pnpm lint
@@ -57,9 +68,6 @@ jobs:
       # Trusted Publishing, OIDC交換はnpm CLIのみ確実
       - name: Publish to npm
         if: steps.published.outputs.exists == 'false'
-        run: npm publish --access public
-
-      - name: Create GitHub release
-        run: gh release create "$GITHUB_REF_NAME" --generate-notes
         env:
-          GH_TOKEN: ${{ github.token }}
+          DIST_TAG: ${{ steps.verify.outputs.dist_tag }}
+        run: npm publish --access public --tag "$DIST_TAG"

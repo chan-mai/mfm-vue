@@ -21,13 +21,79 @@ pnpm dev  # デモ(http://localhost:5173)
 
 クローン済みの場合は`git submodule update --init`でAiScriptの構文定義を取得してください。
 
-## 変更の進め方
+### コマンド
 
-ディレクトリ構成はREADMEの「ディレクトリ構成」を参照してください。
+```sh
+pnpm test       # Vitest
+pnpm typecheck  # vue-tsc
+pnpm lint       # ESLint
+pnpm build      # dist/ へライブラリを出力
+pnpm build:demo # demo/dist/ へデモを出力
+pnpm compare <ノートのURL> # Misskeyのノートページとの描画比較(Headless Chrome)
+```
+
+## 変更の進め方
 
 - 構文の描画は`src/render/nodes/`, `$[...]`の関数は`src/fns/`, 差し替え可能な描画部品は`src/components/defaults/`に追加してください
 - 公開する型は`src/types/`に定義し、`src/index.ts`から公開してください
 - 文言を追加する場合は、`src/i18n/`の同梱言語すべてに追加してください。Misskey本家に同じ文言がある場合は、本家の各言語の訳を使ってください
+
+### ディレクトリ構成
+
+```
+src/
+  components/
+    Mfm.vue                <Mfm>(props, 設定のマージ, 解析, ルート要素)
+    defaults/*.vue         差し替え可能な既定の描画部品
+  render/
+    index.ts               ノード種別から変換関数を選択
+    nodes/text.ts          text, plain
+    nodes/format.ts        bold, strike, italic, small, center, quote
+    nodes/link.ts          url, link, mention, hashtag
+    nodes/emoji.ts         emojiCode, unicodeEmoji
+    nodes/code.ts          inlineCode, blockCode, mathInline, mathBlock
+    nodes/search.ts        search
+    nodes/fn.ts            $[...]のハンドラの実行
+    component.ts           slot, components設定の解決
+    host.ts                ホストの確定
+  fns/
+    animation.ts           tada, jelly, twitch, shake, spin, jump, bounce, rainbow, sparkle
+    transform.ts           flip, x2, x3, x4, rotate, position, scale
+    style.ts               font, blur, fg, bg, border
+    special.ts             ruby, unixtime, clickable
+  styles/
+    format.css             ルート要素, 書式
+    fn.css                 $[...]の装飾, 変形
+    animation.css          アニメーション, キーフレーム
+  config.ts                provideMfmConfig, オプションの解決
+  context.ts               <Mfm>から描画部品への設定共有
+  highlight.ts             shikiによるトークン化
+  i18n/                    同梱文言, 相対時刻の整形
+  clock.ts                 相対時刻用の共有時計
+  preview.ts               URLプレビューの取得, ホバー判定
+  navigation.ts            サイト内遷移の判定
+  media.ts                 メディアプロキシのURL規則
+  theme.ts                 Misskey本家と同じ手順のテーマの解決
+  theme-attrs.ts           テーマのCSS変数の出力
+  emoji-name.ts            Unicode絵文字の名前
+  emoji.ts                 絵文字URL生成関数
+  utils.ts                 引数検証, nyaize
+  types/                   公開型
+    components.ts          描画部品のprops, slot
+    fn.ts                  $[...]ハンドラ
+    i18n.ts                文言
+    options.ts             オプション
+    preview.ts             URL, ユーザプレビュー
+    theme.ts               テーマ
+vendor/aiscript-vscode/    AiScriptの構文定義(git submodule)
+demo/                      動作確認用デモ。MisskeyのテーマはGitHubから実行時に取得
+scripts/                   distの読み込み検査, Misskeyとの描画比較
+test/
+  syntax/                  構文ごとのテスト
+  fns/                     $[...]関数のテスト
+  popup/                   URL, ユーザプレビューのテスト
+  helpers.ts               描画用の補助関数
+```
 
 ### Misskey本家との互換性
 

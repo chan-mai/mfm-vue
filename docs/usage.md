@@ -92,7 +92,7 @@ provideMfmConfig({
 
 ## ユーザプレビュー
 
-`createUserPreviewFetcher(endpoint)`は、Misskeyの`POST /api/users/show`の応答を変換する取得関数を作成ます。フォロー数・フォロワー数は、公開範囲が`public`の場合のみ表示され、名前と自己紹介はMFMとして解釈・描画されます。フォロー等、一切の操作を含みません。
+`createUserPreviewFetcher(endpoint)`は、Misskeyの`POST /api/users/show`の応答を変換する取得関数を作成します。フォロー数・フォロワー数は、公開範囲が`public`の場合のみ表示され、名前と自己紹介はMFMとして解釈・描画されます。フォロー等、一切の操作を含みません。
 
 ```ts
 provideMfmConfig({
